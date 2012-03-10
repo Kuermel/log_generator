@@ -18,10 +18,7 @@ def init_sockets(bind_point):
     publisher = context.socket(zmq.PUB)
     publisher.bind(bind_point)
     print publisher
-    print "init done"
 
 def send(msg):
     global publisher
-    print "try to send", publisher
     publisher.send_unicode(msg)
-    print "done"
