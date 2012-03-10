@@ -21,7 +21,10 @@ class ScenarioThread(threading.Thread):
         while self.__no_shutdown:
             line = self.__scenario.generate_one()
             self.__q.put(line)
-            #time.sleep(1)
+            time.sleep(.3)
+
+    def getName(self):
+        return self.__scenario.getName()
 
     def shutdown(self):
         self.__no_shutdown = False
