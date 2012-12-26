@@ -26,7 +26,7 @@ class ScenarioProcessorThread(threading.Thread):
                 if self.__callback:
                     self.__callback(line)
             except Exception, err:
-                print "Exception:",err
+#                print "Exception:",err
                 pass
 
     def shutdown(self):
