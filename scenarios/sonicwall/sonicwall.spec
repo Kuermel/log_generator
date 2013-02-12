@@ -1,7 +1,7 @@
 {
     "fields" : [
         { "dst" : {"type": "random", "generate_type":"IPv4" } },
-        { "date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%S:%M -0200" } },
+        { "date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%S:%M" } },
         { "url" : {"type": "from_list_file", "file" : "url.list", "method":"sequential" } },
         { "protocol" : {"type": "from_list_file", "file" : "protocol.list", "method":"random" } },
         { "src" : {"type": "from_list_file", "file" : "ip.list", "method":"random" } },
