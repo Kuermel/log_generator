@@ -17,8 +17,9 @@ QUEUE_SIZE = 10000
 SCENARIO_DIRECTORY = '../../scenarios/'
 
 class Scenarios:
-    def __init__(self, scenario_directory=SCENARIO_DIRECTORY):
+    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, period=1):
         self.__scenario_directory = scenario_directory
+        self.__period = period
         self.__scenarios = {}
         self.__threads = []
         self.__msg_queue = multiprocessing.JoinableQueue(QUEUE_SIZE)
@@ -31,7 +32,7 @@ class Scenarios:
     def getScenario(self, name):
         return self.__scenarios.get(name)
 
-    def start(self, _scenario = 'all'):
+    def start(self, _scenario = 'all', period=1):
         for t in self.__threads:
             if _scenario == 'all' or _scenario == t.getName():
                 print "Staring scenario:", t.getName()
@@ -54,6 +55,6 @@ class Scenarios:
                 self.__scenarios[name] = s
 
         for name in self.__scenarios:
-            t = ScenarioThread(self.__scenarios[name], self.__msg_queue)
+            t = ScenarioThread(self.__scenarios[name], self.__msg_queue, self.__period)
             self.__threads.append(t)
 

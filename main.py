@@ -19,6 +19,7 @@ from lib.transport import syslog
 from lib.transport import zeromq
 
 ROOTDIR = os.path.dirname(os.path.realpath(__file__))
+period = 1
 
 def shutdown(signal, frame):
     global s
@@ -27,7 +28,7 @@ def shutdown(signal, frame):
 
 def start():
     global s,server,output,bind_point,_scenario
-    s = Scenarios(ROOTDIR+'/scenarios/')
+    s = Scenarios(ROOTDIR+'/scenarios/', period=period)
     if output == "syslog":
         s.setProcessor(processor_syslog)
     elif output == "zeromq":
@@ -49,10 +50,10 @@ def usage():
     print ""
 
 def getcmd_options():
-    global server,output,bind_point,_scenario
+    global server,output,bind_point,_scenario, period
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "e:o:s:b:", ["scenario","output", "server","bind_point"])
+        opts, args = getopt.getopt(sys.argv[1:], "e:o:s:b:p:", ["scenario","output", "server","bind_point","eps"])
     except getopt.GetoptError, err:
         print str(err)
         usage()
@@ -71,6 +72,14 @@ def getcmd_options():
             bind_point = a
         elif o in ("-e", "--scenario"):
             _scenario = a
+        elif o in ("-p", "--eps"):
+            try:
+                eps = float(a)
+                period = 1/eps
+                offset = period*0.15
+                period = period-offset
+            except:
+                pass
         else:
             assert False, "unknown options"
 

@@ -11,8 +11,9 @@ import threading
 import time
 
 class ScenarioThread(threading.Thread):
-    def __init__(self, scenario, q):
+    def __init__(self, scenario, q, period):
         self.__scenario = scenario
+        self.__period = period
         self.__q = q
         self.__no_shutdown = True
         threading.Thread.__init__(self)
@@ -21,7 +22,7 @@ class ScenarioThread(threading.Thread):
         while self.__no_shutdown:
             line = self.__scenario.generate_one()
             self.__q.put(line)
-            time.sleep(0.001)
+            time.sleep(self.__period)
 
     def getName(self):
         return self.__scenario.getName()
