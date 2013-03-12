@@ -9,5 +9,5 @@
         { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
         { "m" : {"type": "from_list_file", "file" : "m.list", "method":"random" } }
     ],
-    "template" : "id=firewall sn=0017C5654B7A time=\"${date}\" fw=172.16.20.2 pri=6 c=1024 m=${m} url=${url} f=2 sess=Web n=5395848 usr=\"admin\" src=${src}:${port}:X0: dst=${dst}:${port}:X2: proto=udp/dns sent=${sent} appcat=\"${protocol}\" appid=1283"
+    "template" : "id=firewall sn=0017C5654B7A time=\"2012-10-10 10:10:10\" fw=172.16.20.2 pri=6 c=1024 m=${m} url=${url}"
 }

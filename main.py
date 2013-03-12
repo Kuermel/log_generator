@@ -48,6 +48,8 @@ def usage():
     print "./start.sh -e all -o zeromq -b 'tcp://*:9000'"
     print "./start.sh -e all -o stdout"
     print ""
+    print "-p eps"
+    print "-e scenario"
 
 def getcmd_options():
     global server,output,bind_point,_scenario, period
