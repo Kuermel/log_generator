@@ -9,5 +9,5 @@
         { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
         { "m" : {"type": "from_list_file", "file" : "m.list", "method":"random" } }
     ],
-    "template" : "id=firewall sn=0017C5654B7A time=\"2012-10-10 10:10:10\" fw=172.16.20.2 pri=6 c=1024 m=${m} url=${url}"
+    "template" : "id=firewall sn=0017C5654B7A time=\"${date}\" fw=172.16.20.2 pri=6 c=1024 m=${m} url=${url}"
 }
