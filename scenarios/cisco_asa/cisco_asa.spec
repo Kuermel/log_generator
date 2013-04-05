@@ -14,7 +14,7 @@
           "%ASA-session-6-305011: Built dynamic TCP translation from any:${ip2}/${port2} to Merkez_Wan_Int:${ip}/${port}",
           "%ASA-session-6-302013: Built outbound TCP connection 105683971 for Merkez_Wan_Int:${ip}/${port} (${ip}/${port}) to Sube_Mpls:${ip2}/${port2} (${ip2}/${port2})",
           "%ASA-session-6-302014: Teardown TCP connection 105683877 for Merkez_Wan_Int:{ip}/${port} to Merkez_Mpls:{ip2}/${port2} duration 0:00:17 bytes ${number} TCP FINs",
-          "%ASA-session-6-305012: Teardown dynamic UDP translation from any:{ip}/${port} to Merkez_Wan_Int:{ip2}/${port2} duration 0:00:32",
+          "%ASA-session-6-305012: Teardown dynamic UDP translation from any:{ip}/${port} to Merkez_Wan_Int:${ip2}/${port2} duration 0:00:32",
           "%ASA-session-6-302015: Built inbound UDP connection 105683972 for Merkez_Wan_Int:${ip}/${port} (${ip}/${port}) to Merkez_Mpls:${ip2}/${port2} (${ip2}/${port2})",
           "%ASA--4-410001: Dropped UDP DNS reply from Sube_Mpls:${ip}/${port} to Merkez_Wan_Int:${ip2}/${port2}; packet length ${port2} bytes exceeds configured limit of ${number} bytes",
           "%ASA-session-6-302017: Built inbound GRE connection 105683971 from Merkez_Wan_Int:${ip} (${ip}/${port}) to Sube_Mpls:${ip2}/${port2} (${ip2}/${port2})",
