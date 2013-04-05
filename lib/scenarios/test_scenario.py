@@ -35,7 +35,7 @@ class ScenarioTestCase(unittest.TestCase):
         fields = self.__scenario.getFields()
         self.assertEqual(8, len(fields))
 
-    def test_generate_one(self):
+    def DONTtest_generate_one(self):
         log = self.__scenario.generate_one()
         regexp = r'date="(?P<date>.*)" src="(?P<src>.*)" dst="(?P<dst>.*)" recv="(?P<recv>.*)" sent="(?P<sent>.*)" user_agent="(?P<user_agent>.*)" respond_code="(?P<respond_code>.*)"'
         m = re.match(regexp,log)
