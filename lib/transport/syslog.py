@@ -3,7 +3,6 @@
 # All rights reserved.
 #
 from threading import Timer
-from scapy.all import IP,UDP,send
 
 __author__ = 'Ozan Turksever (ozan.turksever@logsign.net)'
 __copyright__ = 'Copyright (c) 2012 Innotim Yazilim Ltd.'
@@ -37,6 +36,10 @@ def udp_send(message, level=LEVEL['notice'], facility=FACILITY['daemon'],
         sock.sendto(data, (host, port))
         sock.close()
     else:
+        from scapy.all import IP,UDP,send,conf
+        conf.sniff_promisc = False
+        conf.promisc = False
+
         payload = str(message[1])
         pkg=IP(src=source_ip, dst=host)/UDP(dport=port)/payload
         send(pkg)
