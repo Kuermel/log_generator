@@ -16,12 +16,13 @@ class ScenarioThread(threading.Thread):
         self.__period = period
         self.__q = q
         self.__no_shutdown = True
+        self.source_ip = None
         threading.Thread.__init__(self)
 
     def run(self):
         while self.__no_shutdown:
             line = self.__scenario.generate_one()
-            self.__q.put(line)
+            self.__q.put((self.source_ip, line))
             time.sleep(self.__period)
 
     def getName(self):
@@ -29,3 +30,6 @@ class ScenarioThread(threading.Thread):
 
     def shutdown(self):
         self.__no_shutdown = False
+
+    def set_source_ip(self, ip):
+        self.source_ip = ip

@@ -3,6 +3,7 @@
 # All rights reserved.
 #
 from threading import Timer
+from scapy.all import IP,UDP,send
 
 __author__ = 'Ozan Turksever (ozan.turksever@logsign.net)'
 __copyright__ = 'Copyright (c) 2012 Innotim Yazilim Ltd.'
@@ -29,10 +30,17 @@ old_count = 0
 def udp_send(message, level=LEVEL['notice'], facility=FACILITY['daemon'],
              host='localhost', port=514):
     global count
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    data = '<%d>%s' % (level + facility * 8, message)
-    sock.sendto(data, (host, port))
-    sock.close()
+    source_ip = message[0]
+    if not source_ip:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        data = '<%d>%s' % (level + facility * 8, message[1])
+        sock.sendto(data, (host, port))
+        sock.close()
+    else:
+        payload = str(message[1])
+        pkg=IP(src=source_ip, dst=host)/UDP(dport=port)/payload
+        send(pkg)
+
     count += 1
 
 

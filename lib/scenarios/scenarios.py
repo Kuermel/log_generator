@@ -33,10 +33,20 @@ class Scenarios:
         return self.__scenarios.get(name)
 
     def start(self, _scenario = 'all', period=1):
+        print _scenario
         for t in self.__threads:
-            if _scenario == 'all' or _scenario == t.getName():
-                print "Staring scenario:", t.getName()
-                t.start()
+            for scenario in _scenario.split(','):
+                _parts = scenario.split(':')
+                name = _parts[0]
+                source_ip = None
+                if len(_parts) == 2:
+                    name = _parts[0]
+                    source_ip = _parts[1]
+
+                if name == 'all' or name == t.getName():
+                    print "Staring scenario:", t.getName(), "source_ip", source_ip
+                    t.set_source_ip(source_ip)
+                    t.start()
 
     def setProcessor(self,callback):
         self.__processorThread = ScenarioProcessorThread(callback,self.__msg_queue)
