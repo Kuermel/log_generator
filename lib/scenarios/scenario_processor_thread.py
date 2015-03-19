@@ -2,6 +2,9 @@
 # Copyright (c) Innotim Yazilim Telekomunikasyon ve Danismanlik Ticaret LTD. STI.
 # All rights reserved.
 #
+from Queue import Empty
+import traceback
+
 __author__ = 'Ozan Turksever (ozan.turksever@logsign.net)'
 __copyright__ = 'Copyright (c) 2012 Innotim Yazilim Ltd.'
 __license__ = 'GPLv2'
@@ -11,6 +14,7 @@ import threading
 
 BLOCK = True
 QUEUE_BLOCK_SEC = 1
+
 
 class ScenarioProcessorThread(threading.Thread):
     def __init__(self, callback, msg_queue):
@@ -25,8 +29,11 @@ class ScenarioProcessorThread(threading.Thread):
                 line = self.__msg_queue.get(BLOCK, QUEUE_BLOCK_SEC)
                 if self.__callback:
                     self.__callback(line)
+            except Empty:
+                pass
             except Exception, err:
-                print "Exception:",err
+                print "Exception:", err
+                print traceback.format_exc()
                 pass
 
     def shutdown(self):

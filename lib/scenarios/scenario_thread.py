@@ -23,7 +23,8 @@ class ScenarioThread(threading.Thread):
         while self.__no_shutdown:
             line = self.__scenario.generate_one()
             self.__q.put((self.source_ip, line))
-            time.sleep(self.__period)
+            if self.__period != 0:
+                time.sleep(self.__period)
 
     def getName(self):
         return self.__scenario.getName()
