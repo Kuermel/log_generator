@@ -13,13 +13,13 @@ from lib.scenarios.scenario import Scenario
 from lib.scenarios.scenario_processor_thread import ScenarioProcessorThread
 from lib.scenarios.scenario_thread import ScenarioThread
 
-QUEUE_SIZE = 10000
+QUEUE_SIZE = 100000
 SCENARIO_DIRECTORY = '../../scenarios/'
 
 class Scenarios:
-    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, period=1):
+    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, eps=1000):
         self.__scenario_directory = scenario_directory
-        self.__period = period
+        self.__eps = eps
         self.__scenarios = {}
         self.__threads = []
         self.__msg_queue = multiprocessing.JoinableQueue(QUEUE_SIZE)
@@ -32,7 +32,7 @@ class Scenarios:
     def getScenario(self, name):
         return self.__scenarios.get(name)
 
-    def start(self, _scenario = 'all', period=1):
+    def start(self, _scenario = 'all'):
         print _scenario
         for t in self.__threads:
             for scenario in _scenario.split(','):
@@ -49,7 +49,7 @@ class Scenarios:
                     t.start()
 
     def setProcessor(self,callback):
-        self.__processorThread = ScenarioProcessorThread(callback,self.__msg_queue)
+        self.__processorThread = ScenarioProcessorThread(callback,self.__msg_queue, self.__eps)
         self.__processorThread.start()
 
     def shutdown(self):
@@ -65,6 +65,6 @@ class Scenarios:
                 self.__scenarios[name] = s
 
         for name in self.__scenarios:
-            t = ScenarioThread(self.__scenarios[name], self.__msg_queue, self.__period)
+            t = ScenarioThread(self.__scenarios[name], self.__msg_queue, self.__eps)
             self.__threads.append(t)
 
