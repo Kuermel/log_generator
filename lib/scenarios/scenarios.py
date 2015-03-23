@@ -17,9 +17,10 @@ QUEUE_SIZE = 100000
 SCENARIO_DIRECTORY = '../../scenarios/'
 
 class Scenarios:
-    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, eps=1000):
+    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, eps=1000, eps_wave=True):
         self.__scenario_directory = scenario_directory
         self.__eps = eps
+        self.__eps_wave = eps_wave
         self.__scenarios = {}
         self.__threads = []
         self.__msg_queue = multiprocessing.JoinableQueue(QUEUE_SIZE)
@@ -49,7 +50,7 @@ class Scenarios:
                     t.start()
 
     def setProcessor(self,callback):
-        self.__processorThread = ScenarioProcessorThread(callback,self.__msg_queue, self.__eps)
+        self.__processorThread = ScenarioProcessorThread(callback,self.__msg_queue, self.__eps, self.__eps_wave)
         self.__processorThread.start()
 
     def shutdown(self):

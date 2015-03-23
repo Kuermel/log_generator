@@ -24,6 +24,7 @@ server = ""
 bind_point = ""
 _scenario = "all"
 _eps = 100
+_eps_wave = True
 
 
 def shutdown(signal, frame):
@@ -34,8 +35,8 @@ def shutdown(signal, frame):
 
 
 def start():
-    global s, server, output, bind_point, _scenario, _eps
-    s = Scenarios(ROOTDIR + '/scenarios/', eps=_eps)
+    global s, server, output, bind_point, _scenario, _eps, _eps_wave
+    s = Scenarios(ROOTDIR + '/scenarios/', eps=_eps, eps_wave=_eps_wave)
     if output == "syslog":
         s.setProcessor(processor_syslog)
     elif output == "zeromq":
@@ -61,7 +62,7 @@ def usage():
 
 
 def getcmd_options():
-    global server, output, bind_point, _scenario, _eps
+    global server, output, bind_point, _scenario, _eps, _eps_wave
 
     try:
         opts, args = getopt.getopt(sys.argv[1:], "e:o:s:b:p:", ["scenario", "output", "server", "bind_point", "eps"])
@@ -85,6 +86,9 @@ def getcmd_options():
             _scenario = a
         elif o in ("-p", "--eps"):
             _eps = float(a)
+        elif o in ("-w", "--eps_wave"):
+            if a == 'no':
+                _eps_wave = True
         else:
             assert False, "unknown options"
 
