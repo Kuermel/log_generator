@@ -9,6 +9,7 @@ __version__ = '0.0.1'
 
 from lib.scenarios.exceptions import ConfigurationError
 from lib.scenarios.fields.generators.datetime_generator import DateTimeGenerator
+from lib.scenarios.fields.generators.timestamp_generator import TimeStampGenerator
 from lib.scenarios.fields.generators.integer_generator import IntegerGenerator
 from lib.scenarios.fields.generators.ipv4_generator import Ipv4Generator
 
@@ -17,6 +18,8 @@ class RandomField:
         self.__name = name
         if generate_type == 'datetime':
             self.__gen_type = DateTimeGenerator(config)
+        elif generate_type == 'timestamp':
+            self.__gen_type = TimeStampGenerator(config)
         elif generate_type == 'integer':
             self.__gen_type = IntegerGenerator(config)
         elif generate_type == 'IPv4':
