@@ -69,8 +69,8 @@ class ScenarioProcessorThread(threading.Thread):
         run_time = random.randint(0, 120)
 
         eps = (wave_percent * self.__eps_orig) / 100
-        print 'wave', eps, run_time
         self.__eps = self.__eps_orig - eps
+        print 'setting new eps(wave): ', self.__eps
 
         t = threading.Timer(run_time, self.adjust_eps_wave)
         t.daemon = True
