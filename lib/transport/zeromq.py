@@ -2,7 +2,6 @@
 # Copyright (c) Innotim Yazilim Telekomunikasyon ve Danismanlik Ticaret LTD. STI.
 # All rights reserved.
 #
-import zmq
 
 __author__ = 'Ozan Turksever (ozan.turksever@logsign.net)'
 __copyright__ = 'Copyright (c) 2012 Innotim Yazilim Ltd.'
@@ -13,6 +12,7 @@ __version__ = '0.0.1'
 
 publisher = None
 def init_sockets(bind_point):
+    import zmq
     global publisher
     context = zmq.Context()
     publisher = context.socket(zmq.PUB)
@@ -21,4 +21,4 @@ def init_sockets(bind_point):
 
 def send(msg):
     global publisher
-    publisher.send_unicode(msg)
+    publisher.send_unicode(msg[1])

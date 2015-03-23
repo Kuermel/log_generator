@@ -9,6 +9,8 @@ Usage:
  $ ./start.sh -o stdout                  # output to stdout
  $ ./start.sh -o syslog -s 192.168.1.100 # output to syslog server
 
+ -w no to disable eps_wave
+
 - How to write new scenarios?
   Check out scenarios/ directory. You simple need to write a json file.
 
