@@ -65,12 +65,12 @@ class ScenarioProcessorThread(threading.Thread):
 
     def adjust_eps_wave(self):
 
-        wave_percent = random.randint(20, 50)
+        wave_percent = random.randint(0, 30)
         run_time = random.randint(0, 120)
 
         eps = (wave_percent * self.__eps_orig) / 100
         self.__eps = self.__eps_orig - eps
-        print 'setting new eps(wave): ', self.__eps
+        print 'setting new eps(wave): ', self.__eps, 'next set time:', run_time
 
         t = threading.Timer(run_time, self.adjust_eps_wave)
         t.daemon = True
@@ -79,7 +79,7 @@ class ScenarioProcessorThread(threading.Thread):
     def run(self):
         global total_count, drop_percent
         self.adjust_drop_rate()
-        if self.__eps_wave:
+        if self.__eps_wave and self.__eps != 0:
             self.adjust_eps_wave()
 
         if self.__eps != 0:
