@@ -2,7 +2,7 @@
     "fields" : [
         { "templateCount" : {"count":3 } },
         { "date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d" } },
-        { "time": {"type": "random", "generate_type":"datetime", "format": "%H:%S:%M" } },
+        { "time": {"type": "random", "generate_type":"datetime", "format": "%H:%M:%S" } },
         { "url" : {"type": "from_list_file", "file" : "url.list", "method":"sequential" } },
         { "ip" : {"type": "from_list_file", "file" : "ip.list", "method":"random" } },
         { "ip2" : {"type": "random", "generate_type":"IPv4" } },
