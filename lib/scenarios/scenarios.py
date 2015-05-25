@@ -13,7 +13,7 @@ from lib.scenarios.scenario import Scenario
 from lib.scenarios.scenario_processor_thread import ScenarioProcessorThread
 from lib.scenarios.scenario_thread import ScenarioThread
 
-QUEUE_SIZE = 100000
+QUEUE_SIZE = 100
 SCENARIO_DIRECTORY = '../../scenarios/'
 
 class Scenarios:
