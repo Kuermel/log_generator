@@ -34,3 +34,8 @@ date="2012/03/03 22:13:34" url="http://www.google.com/" src="84.240.129.251" dst
 --- CUT ---
 
 This file was modified by IntelliJ IDEA 11.0.2 for binding GitHub repository
+
+demo servera 10.0.0.1,10.0.0.2 seklinde eklenen senderlar icin log generator calistirdiginda sistem uzerine bu network icin router eklenmesi gerekiyor.
+yoksa calismaz.
+
+route add -net 10.0.0.0 netmask 255.255.255.0 lo

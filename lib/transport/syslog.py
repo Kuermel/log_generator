@@ -27,7 +27,7 @@ LEVEL = {
 count = 0
 old_count = 0
 def udp_send(message, level=LEVEL['notice'], facility=FACILITY['daemon'],
-             host='localhost', port=514):
+             host='localhost', port=515):
     global count
     source_ip = message[0]
     if not source_ip:
@@ -40,7 +40,8 @@ def udp_send(message, level=LEVEL['notice'], facility=FACILITY['daemon'],
         conf.sniff_promisc = False
         conf.promisc = False
 
-        payload = str(message[1])
+        data = '<%d>%s' % (level + facility * 8, message[1])
+        payload = str(data)
         pkg=IP(src=source_ip, dst=host)/UDP(dport=port)/payload
         send(pkg)
 
