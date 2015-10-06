@@ -14,9 +14,10 @@ import time
 
 
 class ScenarioThread(threading.Thread):
-    def __init__(self, scenario, q, eps):
+    def __init__(self, scenario, q, eps, output='syslog'):
         self.__scenario = scenario
         self.__eps = eps
+        self.__output = output
         self.__q = q
         self.__no_shutdown = True
         self.source_ip = None
@@ -24,7 +25,9 @@ class ScenarioThread(threading.Thread):
 
     def run(self):
         while self.__no_shutdown:
-            line = self.__scenario.generate_one()
+            line = self.__scenario.generate_one(self.__output)
+            if not line:
+                continue
             try:
                 self.__q.put((self.source_ip, line))
             except Queue.Full:

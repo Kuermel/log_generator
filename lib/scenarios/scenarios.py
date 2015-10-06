@@ -17,9 +17,10 @@ QUEUE_SIZE = 100
 SCENARIO_DIRECTORY = '../../scenarios/'
 
 class Scenarios:
-    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, eps=1000, eps_wave=True):
+    def __init__(self, scenario_directory=SCENARIO_DIRECTORY, eps=1000, eps_wave=True, output='syslog'):
         self.__scenario_directory = scenario_directory
         self.__eps = eps
+        self.__output = output
         self.__eps_wave = eps_wave
         self.__scenarios = {}
         self.__threads = []
@@ -66,6 +67,6 @@ class Scenarios:
                 self.__scenarios[name] = s
 
         for name in self.__scenarios:
-            t = ScenarioThread(self.__scenarios[name], self.__msg_queue, self.__eps)
+            t = ScenarioThread(self.__scenarios[name], self.__msg_queue, self.__eps, output=self.__output)
             self.__threads.append(t)
 

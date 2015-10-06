@@ -17,6 +17,7 @@ import sys
 from lib.scenarios.scenarios import Scenarios
 from lib.transport import syslog
 from lib.transport import zeromq
+from lib.transport import es
 
 ROOTDIR = os.path.dirname(os.path.realpath(__file__))
 output = "stdout"
@@ -36,12 +37,14 @@ def shutdown(signal, frame):
 
 def start():
     global s, server, output, bind_point, _scenario, _eps, _eps_wave
-    s = Scenarios(ROOTDIR + '/scenarios/', eps=_eps, eps_wave=_eps_wave)
+    s = Scenarios(ROOTDIR + '/scenarios/', eps=_eps, eps_wave=_eps_wave, output=output)
     if output == "syslog":
         s.setProcessor(processor_syslog)
     elif output == "zeromq":
         zeromq.init_sockets(bind_point)
         s.setProcessor(zeromq.send)
+    elif output == "es":
+        s.setProcessor(processor_es)
     else:
         s.setProcessor(processor_stdout)
 
@@ -96,6 +99,10 @@ def getcmd_options():
         print "Provide the syslog server with -s", server
         usage()
         sys.exit(2)
+    if output == "es" and server == "":
+        print "Provide the es server with -s", server
+        usage()
+        sys.exit(2)
     if output == "zeromq" and bind_point == "":
         print "Provide the bind_point for zeromq with -b", server
         usage()
@@ -109,6 +116,18 @@ def processor_stdout(line):
 def processor_syslog(line):
     global server
     syslog.udp_send(line, host=server)
+
+def processor_es(line):
+    global server
+    parts = server.split(':')
+    _port = 9200
+    if len(parts) == 1:
+        _host = server
+    elif len(parts) == 2:
+        _host = parts[0]
+        _port = int(parts[1])
+
+    es.send(line, host=_host, port=_port)
 
 
 def processor_zeromq(line):
