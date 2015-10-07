@@ -48,6 +48,8 @@ class Scenario:
                     out[k] = data.get(v)
                 else:
                     out[k] = v
+            else:
+                out[k] = v
         return out
 
     def gen_dline(self, tpl, data):
@@ -86,7 +88,7 @@ class Scenario:
                     self.__fields.append(RandomField(field_name, field_config['generate_type'], field_config))
                 elif field_config['type'] == 'from_list_file':
                     self.__fields.append(
-                        FromListFileField(field_name, self.__data_dir + '/' + field_config['file'], field_config))
+                        FromListFileField(field_name, self.__data_dir + '/../../lib/scenarios/fields/lists/' + field_config['file'], field_config))
 
     def __str__(self):
         return "<scenario name=${self.__name}>"
