@@ -10,9 +10,9 @@ __version__ = '0.0.1'
 from random import randint
 
 
-class Ipv4Generator:
+class LocalIpv4Generator:
     def __init__(self, config):
         pass
 
     def generate(self):
-        return ".".join(str(randint(1, 255)) for i in range(4))
+        return "192.168.1."+str(randint(1, 100))

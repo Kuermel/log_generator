@@ -12,6 +12,8 @@ from lib.scenarios.fields.generators.datetime_generator import DateTimeGenerator
 from lib.scenarios.fields.generators.timestamp_generator import TimeStampGenerator
 from lib.scenarios.fields.generators.integer_generator import IntegerGenerator
 from lib.scenarios.fields.generators.ipv4_generator import Ipv4Generator
+from lib.scenarios.fields.generators.local_ipv4_generator import LocalIpv4Generator
+
 
 class RandomField:
     def __init__(self, name, generate_type, config):
@@ -24,6 +26,8 @@ class RandomField:
             self.__gen_type = IntegerGenerator(config)
         elif generate_type == 'IPv4':
             self.__gen_type = Ipv4Generator(config)
+        elif generate_type == 'LocalIPv4':
+            self.__gen_type = LocalIpv4Generator(config)
         else:
             raise ConfigurationError("generate type not found")
 
