@@ -51,7 +51,7 @@
                      "Note": "Usersignedinfrom10"
                  },
                  "Source": {
-                     "IP": "ipv4",
+                     "IP": "src_ipv4",
                      "City": "Unknown",
                      "Country": "country",
                      "Location": "Unknown",
@@ -129,7 +129,7 @@
                      "Info": "RemoteDomainEnforcement(SplitTunnel)"
                  },
                  "Source": {
-                     "IP": "ipv4",
+                     "IP": "src_ipv4",
                      "HostName": "computer_name",
                      "MAC": "9F1760280553",
                      "City": "Unknown",
@@ -184,7 +184,7 @@
                      "Action": "IDS: Delete"
                  },
                  "Source": {
-                     "IP": "ipv4",
+                     "IP": "src_ipv4",
                      "HostName": "computer_name",
                      "MAC": "D69E46FACE50",
                      "City": "Unknown",

@@ -880,7 +880,7 @@
                      "Action": "block"
                  },
                  "Source": {
-                     "IP": "src_ipv4",
+                     "IP": "ipv4",
                      "City": "Unknown",
                      "Interface": "port1",
                      "Location": "Unknown",
@@ -895,7 +895,7 @@
                      "NatIP": "dstnat_ipv4",
                      "Location": "Unknown",
                      "Port": "dst_port",
-                     "Position": "out"
+                     "Position": "in"
                  },
                  "Application": {
                      "Category": "Social.Media",

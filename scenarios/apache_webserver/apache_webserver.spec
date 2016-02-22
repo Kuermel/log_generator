@@ -426,7 +426,7 @@
                 "IP": "ipv4",
                 "City": "Unknown",
                 "Country": "src_country",
-                "Position": "out"
+                "Position": "in"
             },
             "Severity": {
                 "ID": 3,
