@@ -6,11 +6,10 @@
         { "local_dst_ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
         { "date": {"type": "random", "generate_type":"datetime", "format": "%d/%b/%Y:%H:%M:%S" } },
         { "es_date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%M:%S" } },
-        { "url_path" : {"type": "from_list_file", "file" : "url_path.list", "method":"sequential" } },
-        { "url_domain" : {"type": "from_list_file", "file" : "url_domain.list", "method":"sequential" } },
+        { "url_path" : {"type": "from_list_file", "file" : "url_path.list", "method":"random" } },
+        { "url_domain" : {"type": "from_list_file", "file" : "url_domain.list", "method":"random" } },
         { "url_scheme" : {"type": "from_list_file", "file" : "url_scheme.list", "method":"random" } },
         { "url_category" : {"type": "from_list_file", "file" : "url_category.list", "method":"random" } },
-        { "url_requesttype" : {"type": "from_list_file", "file" : "url_requesttype.list", "method":"random" } },
         { "application_name" : {"type": "from_list_file", "file" : "application_name.list", "method":"sequential" } },
         { "method" : {"type": "from_list_file", "file" : "method.list", "method":"random" } },
         { "result_code" : {"type": "from_list_file", "file": "result_code.list", "method":"ratio", "ratio":"50,50" } },
@@ -51,12 +50,12 @@
                      "Note": "Usersignedinfrom10"
                  },
                  "Source": {
-                     "IP": "src_ipv4",
+                     "IP": "ipv4",
                      "City": "Unknown",
-                     "Country": "country",
+                     "Country": "src_country",
                      "Location": "Unknown",
                      "UserName": "username",
-                     "Position": "out"
+                     "Position": "in"
                  },
                  "Severity": {
                      "ID": 6,
@@ -88,9 +87,9 @@
                       "Info": "UserTimedOut"
                   },
                   "Source": {
-                      "IP": "ipv4",
+                      "IP": "src_ipv4",
                       "City": "Unknown",
-                      "Country": "country",
+                      "Country": "src_country",
                       "Location": "Unknown",
                       "UserName": "username",
                       "Position": "out"
@@ -133,7 +132,7 @@
                      "HostName": "computer_name",
                      "MAC": "9F1760280553",
                      "City": "Unknown",
-                     "Country": "country",
+                     "Country": "src_country",
                      "Location": "Unknown",
                      "Port": "src_port",
                      "Position": "out"

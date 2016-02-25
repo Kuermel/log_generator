@@ -293,7 +293,7 @@
                      "City": "city",
                      "Interface": "port7",
                      "Location": "Unknown",
-                     "NatIP": "dstipv4",
+                     "NatIP": "dstnat_ipv4",
                      "Port": "dst_port",
                      "Position": "out"
                  },
@@ -369,7 +369,7 @@
                       "City": "city",
                       "Interface": "port7",
                       "Location": "Unknown",
-                      "NatIP": "dstipv4",
+                      "NatIP": "dstnat_ipv4",
                       "Port": "dst_port",
                       "Position": "out"
                   },
@@ -1153,7 +1153,7 @@
                      "IP": "src_ipv4",
                      "Location": "Unknown",
                      "UserName": "username",
-                     "Position": "out"
+                     "Position": "in"
                  },
                  "Event": {
                      "VendorID": 43015,

@@ -395,7 +395,7 @@
                 "Category": "url_category",
                 "Domain": "url_domain",
                 "Path": "url_path",
-                "Scheme": "url_scheme"
+                "Scheme": "http"
             },
             "Application": {
                 "Name": "web-browsing"
@@ -474,7 +474,7 @@
                 "Category": "url_category",
                 "Domain": "url_domain",
                 "Path": "url_path",
-                "Scheme": "url_scheme"
+                "Scheme": "https"
             },
             "Application": {
                 "Name": "ssl"
@@ -549,7 +549,7 @@
                 "Category": "url_category",
                 "Domain": "url_domain",
                 "Path": "url_path",
-                "Scheme": "url_scheme"
+                "Scheme": "https"
             },
             "Application": {
                 "Name": "web-browsing"
@@ -624,7 +624,7 @@
                 "Category": "url_category",
                 "Domain": "url_domain",
                 "Path": "url_path",
-                "Scheme": "url_scheme"
+                "Scheme": "https"
             },
             "Application": {
                 "Name": "ssl"
@@ -691,16 +691,93 @@
                 "Interface": "ethernet1/21",
                 "Location": "unknown",
                 "Port": "dst_port",
-                "Position": "out",
+                "Position": "in",
                 "Zone": "trust"
             },
             "URL": {
                 "Category": "url_category",
                 "Domain": "url_domain",
-                "Scheme": "url_scheme"
+                "Scheme": "http"
             },
             "Application": {
                 "Name": "application_name"
+            },
+            "Severity": {
+                "ID": 1,
+                "Name": "alert"
+            },
+            "Protocol": {
+                "Name": "tcp"
+            },
+            "Session": {
+                "Direction": "client-to-server",
+                "ID": "session_id"
+            },
+            "Rule": {
+                "Name": "rule5"
+            },
+            "Time": {
+                "Generated": "es_date",
+                "Received": "es_date"
+            }
+        },
+        {
+            "_es_type": "nastedlog",
+            "EventMap": {
+                "Type": "Attack",
+                "SubType": "Detect",
+                "Context": "Security"
+            },
+            "EventSource": {
+                "Vendor": "PaloAlto",
+                "IP": "192.168.1.151",
+                "PrefixID": 3029,
+                "Category": "Firewall",
+                "Type": "Security System",
+                "Description": "palo_alto_fw",
+                "Tag": "palo_alto",
+                "Serial": "0011C100469",
+                "Collector": "syslog-udp"
+            },
+            "Event": {
+                "VendorID": 36,
+                "SystemID": 302936,
+                "Info": "vulnerability web-browsing alert",
+                "SubCategory": "vulnerability",
+                "Category": "THREAT",
+                "Action": "alert"
+            },
+            "Source": {
+                "IP": "src_ipv4",
+                "City": "Unknown",
+                "Country": "src_country",
+                "Interface": "ethernet1/20",
+                "Location": "location",
+                "Port": "src_port",
+                "Position": "in",
+                "Zone": "trust"
+            },
+            "Destination": {
+                "IP": "dst_ipv4",
+                "City": "Unknown",
+                "Country": "dst_country",
+                "Interface": "ethernet1/21",
+                "Location": "unknown",
+                "Port": "dst_port",
+                "Position": "out",
+                "Zone": "untrust"
+            },
+            "URL": {
+                "Category": "any",
+                "Domain": "wp-login.php",
+                "Scheme": "http"
+            },
+            "Details": {
+                "RepeatCount": 2,
+                "ThreatID": "WordPress Login BruteForce Attempt(40044)"
+            },
+            "Application": {
+                "Name": "web-browsing"
             },
             "Severity": {
                 "ID": 1,
