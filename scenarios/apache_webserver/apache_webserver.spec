@@ -1,9 +1,22 @@
 {
     "fields" : [
+        { "templateCount" : {"count":15 } },
+        { "ip" : {"type": "random", "generate_type":"IPv4" } },
+        { "ip2" : {"type": "from_list_file", "file" : "ip.list", "method":"random" } },
+        { "date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%S:%M" } },
+        { "url" : {"type": "from_list_file", "file" : "url.list", "method":"sequential" } },
+        { "protocol" : {"type": "from_list_file", "file" : "protocol.list", "method":"random" } },
+        { "src" : {"type": "from_list_file", "file" : "ip.list", "method":"random" } },
+        { "port" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "port2" : {"type": "random", "generate_type":"integer", "min":1, "max":5000 } },
+        { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "rcvd" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "pri" : {"type": "random", "generate_type":"integer", "min":0, "max":8 } },
+        { "m" : {"type": "from_list_file", "file" : "m.list", "method":"random" } },
         { "ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
         { "src_ipv4" : {"type": "random", "generate_type":"IPv4" } },
         { "dst_ipv4" : {"type": "random", "generate_type":"IPv4" } },
-        { "date": {"type": "random", "generate_type":"datetime", "format": "%d/%b/%Y:%H:%M:%S" } },
+        { "date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%M:%S" } },
         { "es_date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%M:%S" } },
         { "url_path" : {"type": "from_list_file", "file" : "url_path.list", "method":"sequential" } },
         { "url_domain" : {"type": "from_list_file", "file" : "url_domain.list", "method":"sequential" } },
@@ -23,7 +36,9 @@
         { "severity_name" : {"type": "from_list_file", "file" : "severity_name.list", "method":"sequential" } },
         { "error_date": {"type": "random", "generate_type":"datetime", "format": "%a %b %d %H:%M:%S %Y" } }
     ],
-    "template" : [],
+    "template" : [
+        "id=firewall sn=C0EAE41C0ECC time=\"${date}\" fw=${ip} pri=${pri} c=1024 m=537 msg=\"Connection Closed\" f=15 n=38632 src=${ip}:${port}:X0: dst=${ip2}:${port2}:X0: proto=udp/netbios-ns sent=100 rcvd=50"
+    ],
     "json_template": [
         {
             "_es_type": "nastedlog",

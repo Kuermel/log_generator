@@ -27,7 +27,7 @@ LEVEL = {
 count = 0
 old_count = 0
 def udp_send(message, level=LEVEL['notice'], facility=FACILITY['daemon'],
-             host='localhost', port=515):
+             host='localhost', port=514):
     global count
     source_ip = message[0]
     if not source_ip:
