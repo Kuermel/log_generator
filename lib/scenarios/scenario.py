@@ -15,7 +15,9 @@ from lib.scenarios.exceptions import ConfigurationError
 from lib.scenarios.fields.from_list_file_field import FromListFileField
 from lib.scenarios.fields.random_field import RandomField
 import random
-import pprint
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 
 class Scenario:
