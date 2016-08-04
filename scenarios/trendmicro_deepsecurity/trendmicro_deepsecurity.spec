@@ -1,7 +1,7 @@
 {
     "fields" : [
-        { "ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
-        { "src_ipv4" : {"type": "random", "generate_type":"IPv4" } },
+        { "ipv4" : {"type": "random", "generate_type":"IPv4" } },
+        { "src_ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
         { "dst_ipv4" : {"type": "random", "generate_type":"IPv4" } },
         { "local_dst_ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
         { "date": {"type": "random", "generate_type":"datetime", "format": "%d/%b/%Y:%H:%M:%S" } },
@@ -30,6 +30,7 @@
     "json_template": [
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "User",
                      "SubType": "Login",
@@ -50,7 +51,7 @@
                      "Note": "Usersignedinfrom10"
                  },
                  "Source": {
-                     "IP": "ipv4",
+                     "IP": "src_ipv4",
                      "City": "Unknown",
                      "Country": "src_country",
                      "Location": "Unknown",
@@ -68,6 +69,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                   "EventMap": {
                       "Type": "User",
                       "SubType": "Logout",
@@ -87,7 +89,7 @@
                       "Info": "UserTimedOut"
                   },
                   "Source": {
-                      "IP": "src_ipv4",
+                      "IP": "ipv4",
                       "City": "Unknown",
                       "Country": "src_country",
                       "Location": "Unknown",
@@ -105,6 +107,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Sent": "sent"
                  },
@@ -128,7 +131,7 @@
                      "Info": "RemoteDomainEnforcement(SplitTunnel)"
                  },
                  "Source": {
-                     "IP": "src_ipv4",
+                     "IP": "ipv4",
                      "HostName": "computer_name",
                      "MAC": "9F1760280553",
                      "City": "Unknown",
@@ -160,6 +163,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Sent": "sent"
                  },
@@ -183,7 +187,7 @@
                      "Action": "IDS: Delete"
                  },
                  "Source": {
-                     "IP": "src_ipv4",
+                     "IP": "ipv4",
                      "HostName": "computer_name",
                      "MAC": "D69E46FACE50",
                      "City": "Unknown",
@@ -215,6 +219,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                   "Bytes": {
                       "Received": "recv"
                   },
@@ -238,7 +243,7 @@
                       "Action": "Replace"
                   },
                   "Source": {
-                      "IP": "src_ipv4",
+                      "IP": "ipv4",
                       "HostName": "computer_name",
                       "MAC": "D69E46FACE50",
                       "City": "Unknown",
@@ -270,6 +275,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                         "Type": "FileIntegrity",
                         "SubType": "Info",
@@ -303,6 +309,7 @@
              },
              {
                 "_es_type": "nastedlog",
+                "DataType": "log",
                  "EventMap": {
                         "Type": "Malware",
                         "SubType": "Info",
@@ -337,6 +344,7 @@
              },
              {
                 "_es_type": "nastedlog",
+                "DataType": "log",
                 "EventMap": {
                         "Type": "Malware",
                         "SubType": "Info",
@@ -371,6 +379,7 @@
              },
              {
                 "_es_type": "nastedlog",
+                "DataType": "log",
                  "EventMap": {
                        "Type": "URL",
                        "SubType": "Info",
