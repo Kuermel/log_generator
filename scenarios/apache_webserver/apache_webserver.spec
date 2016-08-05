@@ -1,32 +1,38 @@
 {
     "fields" : [
-        { "ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
-        { "src_ipv4" : {"type": "random", "generate_type":"IPv4" } },
-        { "dst_ipv4" : {"type": "random", "generate_type":"IPv4" } },
+        { "ipv4" : {"type": "random", "generate_type":"IPv4" } },
+        { "src_ipv4" : {"type": "random", "generate_type":"LocalIPv4" } },
         { "date": {"type": "random", "generate_type":"datetime", "format": "%d/%b/%Y:%H:%M:%S" } },
         { "es_date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%M:%S" } },
-        { "url_path" : {"type": "from_list_file", "file" : "url_path.list", "method":"sequential" } },
-        { "url_domain" : {"type": "from_list_file", "file" : "url_domain.list", "method":"sequential" } },
-        { "url_category" : {"type": "from_list_file", "file" : "url_category.list", "method":"sequential" } },
-        { "application_name" : {"type": "from_list_file", "file" : "application_name.list", "method":"sequential" } },
+        { "url_path" : {"type": "from_list_file", "file" : "url_path.list", "method":"random" } },
+        { "url_domain" : {"type": "from_list_file", "file" : "url_domain.list", "method":"random" } },
+        { "url_category" : {"type": "from_list_file", "file" : "url_category.list", "method":"random" } },
+        { "url_referrer" : {"type": "from_list_file", "file" : "url_referrer.list", "method":"random" } },
+        { "http_protocol" : {"type": "from_list_file", "file" : "http_protocol.list", "method":"random" } },
+        { "result_code" : {"type": "from_list_file", "file" : "result_code.list", "method":"random" } },
+        { "user_agent" : {"type": "from_list_file", "file" : "user_agent.list", "method":"random" } },
         { "method" : {"type": "from_list_file", "file" : "method.list", "method":"random" } },
-        { "port" : {"type": "from_list_file", "file" : "port.list", "method":"random" } },
-        { "dst_port" : {"type": "from_list_file", "file" : "dst_port.list", "method":"random" } },
-        { "src_port" : {"type": "from_list_file", "file" : "src_port.list", "method":"random" } },
-        { "session_id" : {"type": "from_list_file", "file" : "session_id.list", "method":"random" } },
-        { "result_code" : {"type": "from_list_file", "file": "result_code.list", "method":"ratio", "ratio":"50,50" } },
-        { "recv" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
-        { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
-        { "tot" : {"type": "random", "generate_type":"integer", "min":1, "max":100 } },
+        { "recv" : {"type": "random", "generate_type":"integer", "min":1100, "max":100000 } },
+        { "sent" : {"type": "random", "generate_type":"integer", "min":1100, "max":100000 } },
         { "src_country" : {"type": "from_list_file", "file" : "src_country.list", "method":"random" } },
-        { "username" : {"type": "from_list_file", "file" : "username.list", "method":"random" } },
         { "severity_name" : {"type": "from_list_file", "file" : "severity_name.list", "method":"sequential" } },
+        { "user_agent" : {"type": "from_list_file", "file" : "user_agent.list", "method":"random" } },
         { "error_date": {"type": "random", "generate_type":"datetime", "format": "%a %b %d %H:%M:%S %Y" } }
     ],
-    "template" : [],
+    "template" : [
+        "${ipv4} - - [${date}] \"${method} ${url_path} ${http_protocol}\" ${result_code} ${recv} \"${url_domain}\" \"${user_agent}\"",
+        "${src_ipv4} - - [${date}] \"${method} ${url_path} ${http_protocol}\" ${result_code} ${recv} ${sent} \"${url_domain}\" \"${user_agent}\"",
+        "[${error_date}] [error] [client ${ipv4}] File does not exist: ${url_path}, ${url_referrer}",
+        "[${error_date}] [error] [client ${ipv4}] client denied by server configuration: ${url_path}, ${url_referrer}",
+        "[${error_date}] [error] [client ${src_ipv4}] PHP Warning:  Smarty error: unable to read resource: ${url_path} in ${url_referrer}",
+        "${ipv4} - - [${date}] \"${method} ${url_path} ${http_protocol}\" 301 ${recv} \"-\" \"${user_agent}\"",
+        "${ipv4} - - [${date}] \"-\" 408 0 \"-\" \"-\"",
+        "${ipv4} - - [${date}] \"PUT ${url_path} ${http_protocol}\" 500 ${recv}"
+    ],
     "json_template": [
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv",
                 "Sent": "sent"
@@ -47,12 +53,12 @@
                 "Description": "web_server_1"
             },
             "Event": {
-                "VendorID": 6,
-                "SystemID": 30086,
+                "VendorID": 4,
+                "SystemID": 30084,
                 "Info": "Web Access OK"
             },
             "Source": {
-                "IP": "ipv4",
+                "IP": "src_ipv4",
                 "City": "Unknown",
                 "Country": "src_country",
                 "Position": "in"
@@ -75,6 +81,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -99,7 +106,7 @@
                 "Info": "Not Found"
             },
             "Source": {
-                "IP": "ipv4",
+                "IP": "src_ipv4",
                 "City": "Unknown",
                 "Country": "src_country",
                 "Position": "in"
@@ -122,6 +129,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -149,7 +157,7 @@
                 "IP": "ipv4",
                 "City": "Unknown",
                 "Country": "src_country",
-                "Position": "in"
+                "Position": "out"
             },
             "URL": {
                 "Method": "method",
@@ -169,6 +177,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -196,7 +205,7 @@
                 "IP": "ipv4",
                 "City": "Unknown",
                 "Country": "src_country",
-                "Position": "in"
+                "Position": "out"
             },
             "URL": {
                 "Method": "method",
@@ -216,6 +225,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -263,6 +273,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -310,6 +321,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -341,9 +353,7 @@
             },
             "URL": {
                 "Method": "PROPFIND",
-                "Domain": "url_domain",
                 "Path": "url_path",
-                "Protocol": "HTTP/1.1",
                 "ResultCode": 405
             },
             "Severity": {
@@ -357,6 +367,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "Bytes": {
                 "Received": "recv"
             },
@@ -370,7 +381,7 @@
                 "IP": "192.168.1.150",
                 "PrefixID": 3008,
                 "Directory": "smb://192.168.1.150/cap_apache_server",
-                "FileName": "access20160201.log",
+                "FileName": "access_www_log",
                 "Category": "Web Server",
                 "Type": "Application Server",
                 "Description": "web_server_master"
@@ -388,7 +399,6 @@
             },
             "URL": {
                 "Method": "method",
-                "Domain": "url_domain",
                 "Path": "url_path",
                 "Protocol": "HTTP/1.0",
                 "ResultCode": 302
@@ -404,6 +414,7 @@
         },
         {
             "_es_type": "nastedlog",
+            "DataType": "log",
             "EventMap": {
                 "Type": "Service",
                 "SubType": "Error",

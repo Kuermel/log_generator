@@ -17,7 +17,7 @@
         { "method" : {"type": "from_list_file", "file" : "method.list", "method":"random" } },
         { "session_id" : {"type": "from_list_file", "file" : "session_id.list", "method":"random" } },
         { "result_code" : {"type": "from_list_file", "file": "result_code.list", "method":"ratio", "ratio":"50,50" } },
-        { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "sent" : {"type": "random", "generate_type":"integer", "min":1100, "max":100000 } },
         { "port" : {"type": "from_list_file", "file" : "port.list", "method":"random" } },
         { "srcnat_port" : {"type": "from_list_file", "file" : "srcnat_port.list", "method":"random" } },
         { "dstnat_port" : {"type": "from_list_file", "file" : "dstnat_port.list", "method":"random" } },
@@ -25,7 +25,7 @@
         { "src_port" : {"type": "from_list_file", "file" : "src_port.list", "method":"random" } },
         { "username" : {"type": "from_list_file", "file" : "username.list", "method":"random" } },
         { "host_name" : {"type": "from_list_file", "file" : "host_name.list", "method":"random" } },
-        { "recv" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "recv" : {"type": "random", "generate_type":"integer", "min":1100, "max":100000 } },
         { "duration_time" : {"type": "random", "generate_type":"integer", "min":1, "max":1000 } },
         { "src_country" : {"type": "from_list_file", "file" : "src_country.list", "method":"random" } },
         { "dst_country" : {"type": "from_list_file", "file" : "dst_country.list", "method":"random" } },
@@ -37,6 +37,7 @@
     "json_template": [
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Allow",
@@ -101,6 +102,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Allow",
@@ -130,7 +132,7 @@
                          "Country": "src_country",
                          "Location": "Unknown",
                          "Port": "src_port",
-                         "Position": "in",
+                         "Position": "out",
                          "UserName": "username"
                      },
                      "Destination": {
@@ -165,6 +167,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Info",
@@ -225,6 +228,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Deny",
@@ -293,6 +297,7 @@
              },
              {
                       "_es_type": "nastedlog",
+                      "DataType": "log",
                       "EventMap": {
                           "Type": "Session",
                           "SubType": "Deny",
@@ -360,6 +365,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Allow",
@@ -432,6 +438,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Allow",
@@ -502,6 +509,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Allow",
@@ -572,6 +580,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Session",
                          "SubType": "Info",
@@ -638,6 +647,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "Bytes": {
                          "Received": "recv",
                          "Sent": "sent"
@@ -719,6 +729,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "URL",
                          "SubType": "Block",
@@ -796,6 +807,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "URL",
                          "SubType": "Info",
@@ -874,6 +886,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "URL",
                          "SubType": "Redirect",
@@ -952,6 +965,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Virus",
                          "SubType": "Detect",
@@ -1030,6 +1044,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Attack",
                          "SubType": "Block",
@@ -1103,6 +1118,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Attack",
                          "SubType": "Detect",
@@ -1178,6 +1194,7 @@
              },
              {
                      "_es_type": "nastedlog",
+                     "DataType": "log",
                      "EventMap": {
                          "Type": "Malware",
                          "SubType": "Info",

@@ -17,14 +17,14 @@
         { "method" : {"type": "from_list_file", "file" : "method.list", "method":"random" } },
         { "session_id" : {"type": "from_list_file", "file" : "session_id.list", "method":"random" } },
         { "result_code" : {"type": "from_list_file", "file": "result_code.list", "method":"ratio", "ratio":"50,50" } },
-        { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "sent" : {"type": "random", "generate_type":"integer", "min":1100, "max":100000 } },
         { "port" : {"type": "from_list_file", "file" : "port.list", "method":"random" } },
         { "srcnat_port" : {"type": "from_list_file", "file" : "srcnat_port.list", "method":"random" } },
         { "dstnat_port" : {"type": "from_list_file", "file" : "dstnat_port.list", "method":"random" } },
         { "dst_port" : {"type": "from_list_file", "file" : "dst_port.list", "method":"random" } },
         { "src_port" : {"type": "from_list_file", "file" : "src_port.list", "method":"random" } },
         { "username" : {"type": "from_list_file", "file" : "username.list", "method":"random" } },
-        { "recv" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
+        { "recv" : {"type": "random", "generate_type":"integer", "min":1100, "max":100000 } },
         { "duration_time" : {"type": "random", "generate_type":"integer", "min":1, "max":1000 } },
         { "src_country" : {"type": "from_list_file", "file" : "src_country.list", "method":"random" } },
         { "dst_country" : {"type": "from_list_file", "file" : "dst_country.list", "method":"random" } },
@@ -32,10 +32,12 @@
         { "severity_name" : {"type": "from_list_file", "file" : "severity_name.list", "method":"sequential" } },
         { "error_date": {"type": "random", "generate_type":"datetime", "format": "%a %b %d %H:%M:%S %Y" } }
     ],
-    "template" : [],
+    "template" : [
+    ],
     "json_template": [
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Received": "recv",
                      "Sent": "sent"
@@ -107,6 +109,7 @@
              },
              {
                   "_es_type": "nastedlog",
+                  "DataType": "log",
                   "Bytes": {
                       "Received": "recv",
                       "Sent": "sent"
@@ -179,6 +182,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Received": "0",
                      "Sent": "0"
@@ -224,7 +228,7 @@
                      "NatIP": "local_dstnat_ipv4",
                      "NatISP": "dnat",
                      "Port": "dst_port",
-                     "Position": "out"
+                     "Position": "in"
                  },
                  "Policy": {
                      "ID": 296
@@ -250,6 +254,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Received": "recv",
                      "Sent": "sent"
@@ -326,6 +331,7 @@
              },
              {
                   "_es_type": "nastedlog",
+                  "DataType": "log",
                   "Bytes": {
                       "Received": "recv",
                       "Sent": "sent"
@@ -402,6 +408,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Received": 0,
                      "Sent": "sent"
@@ -477,6 +484,7 @@
              },
              {
                   "_es_type": "nastedlog",
+                  "DataType": "log",
                   "Bytes": {
                       "Received": 0,
                       "Sent": "sent"
@@ -552,6 +560,7 @@
              },
              {
                   "_es_type": "nastedlog",
+                  "DataType": "log",
                   "Bytes": {
                       "Received": "recv",
                       "Sent": "sent"
@@ -628,6 +637,7 @@
              },
              {
                    "_es_type": "nastedlog",
+                   "DataType": "log",
                    "Bytes": {
                        "Received": "recv",
                        "Sent": "sent"
@@ -704,6 +714,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "Virus",
                      "SubType": "Block",
@@ -775,7 +786,77 @@
                  }
              },
              {
+                  "_es_type": "nastedlog",
+                  "DataType": "log",
+                  "EventMap": {
+                      "Type": "Virus",
+                      "SubType": "Block",
+                      "Context": "Security"
+                  },
+                  "EventSource": {
+                      "Vendor": "Fortinet",
+                      "Product": "FortiGate",
+                      "IP": "192.168.1.152",
+                      "ID": "FG800C3913802819",
+                      "Name": "Security Guard",
+                      "PrefixID": 3024,
+                      "Category": "Firewall",
+                      "Type": "Security System",
+                      "Description": "fortigate_fw"
+                  },
+                  "Event": {
+                      "VendorID": 8452,
+                      "SystemID": 302408452,
+                      "Info": "Command blocked.",
+                      "SubCategory": "virus",
+                      "Category": "utm",
+                      "Action": "blocked"
+                  },
+                  "Source": {
+                      "IP": "ipv4",
+                      "City": "Unknown",
+                      "Interface": "port1",
+                      "Location": "Unknown",
+                      "Port": "src_port",
+                      "Position": "out"
+                  },
+                  "Destination": {
+                      "IP": "local_dst_ipv4",
+                      "City": "Unknown",
+                      "Interface": "port2",
+                      "Location": "Unknown",
+                      "Port": "21",
+                      "Position": "in"
+                  },
+                  "Details": {
+                      "Command": "REST",
+                      "VirtualDomain": "root"
+                  },
+                  "Severity": {
+                      "ID": 4,
+                      "Name": "warning"
+                  },
+                  "Protocol": {
+                      "ID": 6
+                  },
+                  "Session": {
+                      "Direction": "outgoing",
+                      "ID": "session_id"
+                  },
+                  "Service": {
+                      "Name": "FTP"
+                  },
+                  "Policy": {
+                      "ID": 89
+                  },
+                  "Time": {
+                      "Generated": "es_date",
+                      "Received": "es_date"
+                  }
+             },
+             {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "Virus",
                      "SubType": "Info",
@@ -855,6 +936,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "Attack",
                      "SubType": "Block",
@@ -928,6 +1010,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "User",
                      "SubType": "Login",
@@ -980,6 +1063,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "User",
                      "SubType": "Deny",
@@ -1031,6 +1115,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "Bytes": {
                      "Received": "recv",
                      "Sent": "sent"
@@ -1087,6 +1172,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "User",
                      "SubType": "Login",
@@ -1132,6 +1218,7 @@
              },
              {
                  "_es_type": "nastedlog",
+                 "DataType": "log",
                  "EventMap": {
                      "Type": "User",
                      "SubType": "Logout",
