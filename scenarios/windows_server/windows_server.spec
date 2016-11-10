@@ -34,6 +34,7 @@
     "json_template": [
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Login",
@@ -52,7 +53,7 @@
                         "IP": "ipv4",
                         "HostName": "computer_name",
                         "LogonID": "0x250308a5",
-                        "LogonType": 3,
+                        "LogonTypeID": 3,
                         "Port": "port",
                         "UserName": "username"
                     },
@@ -81,6 +82,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Deny",
@@ -97,7 +99,7 @@
                     "Source": {
                         "IP": "ipv4",
                         "Domain": "domain_name",
-                        "LogonType": 3,
+                        "LogonTypeID": 3,
                         "Port": "port",
                         "UserName": "username"
                     },
@@ -129,6 +131,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Deny",
@@ -145,7 +148,7 @@
                     "Source": {
                         "IP": "ipv4",
                         "Domain": "domain_name",
-                        "LogonType": 3,
+                        "LogonTypeID": 3,
                         "Port": "port",
                         "UserName": "username"
                     },
@@ -177,6 +180,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Logout",
@@ -193,7 +197,7 @@
                     "Source": {
                         "Domain": "domain_name",
                         "LogonID": "0x250308a5",
-                        "LogonType": 3,
+                        "LogonTypeID": 3,
                         "Port": "48820",
                         "SecurityID": "S-1-5-21",
                         "UserName": "username"
@@ -224,6 +228,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Login",
@@ -242,7 +247,7 @@
                         "IP": "ipv4",
                         "Hostname": "dst_computer_name",
                         "LogonID": "0x250308a5",
-                        "LogonType": 10,
+                        "LogonTypeID": 10,
                         "Port": "48820",
                         "SecurityID": "S-1-5-21",
                         "UserName": "username"
@@ -273,6 +278,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Add",
@@ -329,6 +335,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Password",
                         "SubType": "Change",
@@ -379,6 +386,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Password",
                         "SubType": "Change",
@@ -429,6 +437,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Group",
                         "SubType": "Delete",
@@ -478,6 +487,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Group",
                         "SubType": "Add",
@@ -530,6 +540,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Group",
                         "SubType": "Add",
@@ -580,6 +591,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Computer",
                         "SubType": "Add",
@@ -633,6 +645,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Computer",
                         "SubType": "Deleted",
@@ -682,6 +695,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Delete",
@@ -731,6 +745,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Enable",
@@ -781,6 +796,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Disable",
@@ -831,6 +847,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Lock",
@@ -881,6 +898,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Unlock",
@@ -930,6 +948,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "User",
                         "SubType": "Change",
@@ -979,6 +998,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Group",
                         "SubType": "Change",
@@ -1028,6 +1048,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Fileshare",
                         "SubType": "Grant",
@@ -1091,6 +1112,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Fileshare",
                         "SubType": "Grant",
@@ -1154,6 +1176,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Fileshare",
                         "SubType": "Grant",
@@ -1218,6 +1241,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "Fileshare",
                         "SubType": "Grant",
@@ -1282,6 +1306,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "File",
                         "SubType": "Access",
@@ -1335,6 +1360,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "File",
                         "SubType": "Access",
@@ -1393,6 +1419,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "File",
                         "SubType": "Access",
@@ -1452,6 +1479,7 @@
                 },
                 {
                     "_es_type": "nastedlog",
+                    "DataType": "log",
                     "EventMap": {
                         "Type": "File",
                         "SubType": "Access",

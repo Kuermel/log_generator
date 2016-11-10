@@ -4,27 +4,25 @@
         { "date": {"type": "random", "generate_type":"datetime", "format": "%d/%b/%Y:%H:%M:%S" } },
         { "es_date": {"type": "random", "generate_type":"datetime", "format": "%Y-%m-%d %H:%M:%S" } },
         { "url_category" : {"type": "from_list_file", "file" : "url_category.list", "method":"random" } },
-        { "url_requesttype" : {"type": "from_list_file", "file" : "url_requesttype.list", "method":"random" } },
         { "application_name" : {"type": "from_list_file", "file" : "application_name.list", "method":"sequential" } },
         { "method" : {"type": "from_list_file", "file" : "method.list", "method":"random" } },
         { "file_offset" : {"type": "from_list_file", "file" : "file_offset.list", "method":"random" } },
         { "file_path" : {"type": "from_list_file", "file" : "file_path.list", "method":"random" } },
         { "server_name" : {"type": "from_list_file", "file" : "server_name.list", "method":"random" } },
         { "session_id" : {"type": "from_list_file", "file" : "session_id.list", "method":"random" } },
-        { "sent" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
         { "port" : {"type": "from_list_file", "file" : "port.list", "method":"random" } },
         { "username" : {"type": "from_list_file", "file" : "username.list", "method":"random" } },
         { "database_name" : {"type": "from_list_file", "file" : "database_name.list", "method":"random" } },
         { "mssql_object_name" : {"type": "from_list_file", "file" : "mssql_object_name.list", "method":"random" } },
         { "mssql_schema_name" : {"type": "from_list_file", "file" : "mssql_schema_name.list", "method":"random" } },
         { "domain_name" : {"type": "from_list_file", "file" : "domain_name.list", "method":"random" } },
-        { "recv" : {"type": "random", "generate_type":"integer", "min":1, "max":10000 } },
         { "error_date": {"type": "random", "generate_type":"datetime", "format": "%a %b %d %H:%M:%S %Y" } }
     ],
     "template" : [],
     "json_template": [
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "User",
                  "SubType": "Deny",
@@ -70,6 +68,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "User",
                  "SubType": "Login",
@@ -113,6 +112,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "User",
                  "SubType": "Logout",
@@ -158,6 +158,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Select",
@@ -211,6 +212,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Execute",
@@ -264,6 +266,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Update",
@@ -317,6 +320,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Update",
@@ -370,6 +374,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Delete",
@@ -423,6 +428,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Delete",
@@ -476,6 +482,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Delete",
@@ -530,6 +537,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Insert",
@@ -584,6 +592,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Info",
@@ -638,6 +647,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Info",
@@ -692,6 +702,7 @@
          },
          {
              "_es_type": "nastedlog",
+             "DataType": "log",
              "EventMap": {
                  "Type": "Database",
                  "SubType": "Create",
