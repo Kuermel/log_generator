@@ -2,7 +2,6 @@
 # Copyright (c) Innotim Yazilim Telekomunikasyon ve Danismanlik Ticaret LTD. STI.
 # All rights reserved.
 #
-import random
 
 __author__ = 'Ozan Turksever (ozan.turksever@logsign.net)'
 __copyright__ = 'Copyright (c) 2012 Innotim Yazilim Ltd.'
@@ -116,6 +115,7 @@ def processor_stdout(line):
 def processor_syslog(line):
     global server
     syslog.udp_send(line, host=server)
+
 
 def processor_es(line):
     global server
