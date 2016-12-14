@@ -17,4 +17,6 @@ class DateTimeGenerator:
             self.__format = "%Y/%m/%d %H:%M:%S"
 
     def generate(self):
+        yesterday = datetime.date.fromordinal(datetime.date.today().toordinal()-1)
         return datetime.datetime.now().strftime(self.__format)
+        # return yesterday.strftime(self.__format)
