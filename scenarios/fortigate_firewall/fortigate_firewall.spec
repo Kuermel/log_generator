@@ -46,7 +46,14 @@
             "date": {
                 "type": "random",
                 "generate_type": "datetime",
-                "format": "%Y/%m/%d"
+                "format": "%Y-%m-%d"
+            }
+        },
+        {
+            "syslog_date": {
+                "type": "random",
+                "generate_type": "datetime",
+                "format": "%b %d %H:%M:%S"
             }
         },
         {
@@ -253,7 +260,7 @@
         }
     ],
     "template": [
-        "date=$date time=$time logid=0001000014 type=traffic subtype=local level=$severity_name vd=vdom1 srcip=$src_ipv4 srcport=$port srcintf=\"mgmt1\" dstip=$dst_ipv4 dstport=$port dstintf=\"vdom1\" sessionid=$sessionid status=§status policyid=0 dstcountry=\"Reserved\" srccountry=\"Reserved\" trandisp=noop service=HTTP proto=6 app=\"$application_name\" duration=$duration_time sentbyte=$sent rcvdbyte=$recv sentpkt=9 rcvdpkt=9 devtype=\"FortinetDevice\" osname=\"FortinetOS\" mastersrcmac=00:09:0f:67:6c:31 srcmac=00:09:0f:67:6c:31"
+        "$syslog_date date=$date time=$time logid=0001000014 type=traffic subtype=local level=$severity_name vd=vdom1 srcip=$src_ipv4 srcport=$port srcintf=\"mgmt1\" dstip=$dst_ipv4 dstport=$port dstintf=\"vdom1\" sessionid=$sessionid status=§status policyid=0 dstcountry=\"Reserved\" srccountry=\"Reserved\" trandisp=noop service=HTTP proto=6 app=\"$application_name\" duration=$duration_time sentbyte=$sent rcvdbyte=$recv sentpkt=9 rcvdpkt=9 devtype=\"FortinetDevice\" osname=\"FortinetOS\" mastersrcmac=00:09:0f:67:6c:31 srcmac=00:09:0f:67:6c:31"
     ],
     "json_template": [
         {
