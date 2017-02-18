@@ -25,6 +25,7 @@ bind_point = ""
 _scenario = "all"
 _eps = 100
 _eps_wave = True
+port = 514
 
 
 def shutdown(signal, frame):
@@ -55,7 +56,7 @@ def start():
 
 def usage():
     print ""
-    print "./start.sh -e all -o syslog -s 192.168.1.10"
+    print "./start.sh -e all -o syslog -s 192.168.1.10 -P 514"
     print "./start.sh -e all -o zeromq -b 'tcp://*:9000'"
     print "./start.sh -e all -o stdout"
     print ""
@@ -82,6 +83,8 @@ def getcmd_options():
             output = a
         elif o in ("-s", "--server"):
             server = a
+        elif o in ("-P", "--port"):
+            port = a
         elif o in ("-b", "--bind_point"):
             bind_point = a
         elif o in ("-e", "--scenario"):
