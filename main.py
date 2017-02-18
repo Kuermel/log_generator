@@ -78,6 +78,7 @@ def getcmd_options():
     server = ""
     bind_point = ""
     _scenario = "all"
+     port = "514"
     for o, a in opts:
         if o in ("-o", "--output"):
             output = a
