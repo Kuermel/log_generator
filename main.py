@@ -36,8 +36,8 @@ def shutdown(signal, frame):
 
 
 def start():
-    global s, server, output, bind_point, _scenario, _eps, _eps_wave
-    s = Scenarios(ROOTDIR + '/scenarios/', eps=_eps, eps_wave=_eps_wave, output=output)
+    global s, server, output, bind_point, _scenario, _eps, _eps_wave, port
+    s = Scenarios(ROOTDIR + '/scenarios/', eps=_eps, eps_wave=_eps_wave, output=output, port=port)
     if output == "syslog":
         s.setProcessor(processor_syslog)
     elif output == "zeromq":
@@ -65,10 +65,10 @@ def usage():
 
 
 def getcmd_options():
-    global server, output, bind_point, _scenario, _eps, _eps_wave
+    global server, output, bind_point, _scenario, _eps, _eps_wave, port
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "e:o:s:b:p:", ["scenario", "output", "server", "bind_point", "eps"])
+        opts, args = getopt.getopt(sys.argv[1:], "e:o:s:b:p:P:", ["scenario", "output", "server", "bind_point", "eps", "port"])
     except getopt.GetoptError, err:
         print str(err)
         usage()
