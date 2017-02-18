@@ -117,7 +117,7 @@ def processor_stdout(line):
 
 def processor_syslog(line):
     global server
-    syslog.udp_send(line, host=server)
+    syslog.udp_send(line, host=server, port=port)
 
 
 def processor_es(line):
